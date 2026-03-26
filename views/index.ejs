@@ -88,7 +88,11 @@
                   <span><strong><%= course.lessons %></strong> bài học</span>
                   <span><strong><%= course.quizzes %></strong> quiz</span>
                 </div>
-                <button class="btn-course-open text-link-btn">Xem chi tiết →</button>
+                <% if (course.grade === 6) { %>
+                  <a href="/lop6" class="text-link-btn" style="display:inline-block;padding:0;background:none;border:none;cursor:pointer;font-size:inherit;font-family:inherit;color:#ff7a1a;font-weight:600;text-decoration:none;">Xem chi tiết →</a>
+                <% } else { %>
+                  <button class="btn-course-open text-link-btn">Xem chi tiết →</button>
+                <% } %>
               </article>
             <% }) %>
           </div>
