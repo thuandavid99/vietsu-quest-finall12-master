@@ -21,6 +21,8 @@ module.exports = {
           id: 'bai-1',
           number: 1,
           title: 'Lịch sử và cuộc sống',
+          pdf: '/pdfs/lop6/bai1.pdf',
+          infographic: '/images/lop6/bai1-infographic.png',
           mindmap: {
             center: 'Lịch sử và cuộc sống',
             branches: [
