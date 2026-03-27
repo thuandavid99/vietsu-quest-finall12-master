@@ -65,39 +65,70 @@
       <section id="courses" class="section">
         <div class="container">
           <div class="section-head reveal">
-            <div><p class="eyebrow">Khóa học theo lớp</p><h2>Lịch sử 6, 7, 8, 9, 10, 11, 12</h2></div>
-            <p class="section-note">Thiết kế rõ ràng như nền tảng edtech, dễ mở rộng nội dung về sau.</p>
+            <div><p class="eyebrow">Khóa học theo lớp</p><h2>Lịch sử <span style="color:#ff7a1a">6</span> – Kết nối tri thức</h2></div>
+            <p class="section-note">5 chương · 20 bài học · Sơ đồ tư duy tương tác cho từng bài.</p>
           </div>
-          <div class="tabs reveal" data-tabs>
-            <% data.courseTabs.forEach((tab, index) => { %>
-              <button class="tab-button <%= index === 0 ? 'active' : '' %>" data-filter="<%= tab.id %>"><%= tab.label %></button>
+
+          <style>
+            .chapter-cards-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:1.25rem; margin-bottom:1.5rem; }
+            .chapter-card { background:#fff; border:2px solid #f0e8e0; border-radius:16px; padding:1.5rem 1.25rem; cursor:pointer; transition:all .2s; text-align:center; }
+            .chapter-card:hover { border-color:#ff7a1a; box-shadow:0 4px 20px #ff7a1a18; transform:translateY(-3px); }
+            .chapter-card.active { border-color:#ff7a1a; background:#fff8f3; }
+            .chapter-card .ch-icon { font-size:2.2rem; margin-bottom:.6rem; display:block; }
+            .chapter-card .ch-num { font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#ff7a1a; margin-bottom:.25rem; }
+            .chapter-card .ch-title { font-size:.85rem; font-weight:700; color:#1a1a1a; line-height:1.4; margin-bottom:.7rem; }
+            .chapter-card .ch-count { font-size:.78rem; color:#888; background:#f5f0eb; padding:.2rem .6rem; border-radius:99px; display:inline-block; }
+            .chapter-card.active .ch-count { background:#ff7a1a22; color:#ff7a1a; font-weight:700; }
+
+            .chapter-lessons-panel { display:none; background:#fff; border:2px solid #ff7a1a; border-radius:16px; padding:1.5rem; margin-bottom:1.5rem; animation:slideDown .22s ease; }
+            .chapter-lessons-panel.active { display:block; }
+            @keyframes slideDown { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)} }
+            .panel-header { display:flex; align-items:center; gap:.85rem; margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid #f0e8e0; }
+            .panel-icon { font-size:1.6rem; }
+            .panel-title { font-size:1rem; font-weight:800; color:#1a1a1a; margin:0; }
+            .panel-sub { font-size:.8rem; color:#999; margin:.15rem 0 0; }
+            .lesson-list { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:.5rem; }
+            .lesson-item { display:flex; align-items:center; gap:.75rem; padding:.65rem .9rem; border-radius:10px; border:1.5px solid #f0e8e0; background:#fafaf8; text-decoration:none; color:#1a1a1a; transition:all .15s; }
+            .lesson-item:hover { border-color:#ff7a1a; background:#fff8f3; }
+            .lesson-item-num { width:30px; height:30px; border-radius:8px; background:#fff4ec; color:#ff7a1a; font-weight:800; font-size:.8rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+            .lesson-item-title { flex:1; font-size:.88rem; font-weight:500; }
+            .lesson-item:hover .lesson-item-title { color:#ff7a1a; }
+          </style>
+
+          <div class="chapter-cards-grid reveal">
+            <% data.lop6Chapters.forEach(function(ch) { %>
+            <div class="chapter-card" onclick="toggleChapter('<%= ch.id %>', this)">
+              <span class="ch-icon"><%= ch.icon %></span>
+              <div class="ch-num">Chương <%= ch.number %></div>
+              <div class="ch-title"><%= ch.title %></div>
+              <span class="ch-count"><%= ch.lessons.length %> bài học</span>
+            </div>
             <% }) %>
           </div>
-          <div class="cards-grid courses-grid">
-            <% data.courses.forEach((course, i) => { %>
-              <article class="course-card reveal" style="transition-delay:<%=i*0.06%>s"
-                data-level="<%= course.level %>"
-                data-course="<%- JSON.stringify(course).replace(/"/g,'&quot;') %>">
-                <div class="course-top">
-                  <span class="grade-badge">Lớp <%= course.grade %></span>
-                  <span class="theme-tag"><%= course.theme %></span>
-                </div>
-                <h3><%= course.title %></h3>
-                <p><%= course.description %></p>
-                <div class="course-meta">
-                  <span><strong><%= course.lessons %></strong> bài học</span>
-                  <span><strong><%= course.quizzes %></strong> quiz</span>
-                </div>
-                <% if (course.grade === 6) { %>
-                  <a href="/lop6" class="text-link-btn" style="display:inline-block;padding:0;background:none;border:none;cursor:pointer;font-size:inherit;font-family:inherit;color:#ff7a1a;font-weight:600;text-decoration:none;">Xem chi tiết →</a>
-                <% } else { %>
-                  <button class="btn-course-open text-link-btn">Xem chi tiết →</button>
-                <% } %>
-              </article>
-            <% }) %>
+
+          <% data.lop6Chapters.forEach(function(ch) { %>
+          <div class="chapter-lessons-panel" id="panel-<%= ch.id %>">
+            <div class="panel-header">
+              <span class="panel-icon"><%= ch.icon %></span>
+              <div>
+                <div class="panel-title"><%= ch.title %></div>
+                <div class="panel-sub"><%= ch.lessons.length %> bài học</div>
+              </div>
+            </div>
+            <div class="lesson-list">
+              <% ch.lessons.forEach(function(lesson) { %>
+              <a href="/lop6#lesson-<%= lesson.id %>" class="lesson-item">
+                <div class="lesson-item-num">B<%= lesson.number %></div>
+                <div class="lesson-item-title">Bài <%= lesson.number %>. <%= lesson.title %></div>
+              </a>
+              <% }) %>
+            </div>
           </div>
+          <% }) %>
+
         </div>
       </section>
+
 
       <section id="methods" class="section section-soft">
         <div class="container">
@@ -318,5 +349,21 @@
       <div id="vsModalBox" class="vs-modal-box"></div>
       <button id="vsModalClose" class="vs-modal-close" aria-label="Đóng">✕</button>
     </div>
+
+    <script>
+    function toggleChapter(id, card) {
+      const panel = document.getElementById('panel-' + id);
+      const isOpen = panel.classList.contains('active');
+      // Đóng tất cả
+      document.querySelectorAll('.chapter-lessons-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.chapter-card').forEach(c => c.classList.remove('active'));
+      // Nếu chưa mở thì mở
+      if (!isOpen) {
+        panel.classList.add('active');
+        card.classList.add('active');
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+    </script>
   </body>
 </html>

@@ -85,7 +85,7 @@ function renderMindmap(mm, accentColor) {
 
 
 router.get('/', (req, res) => {
-  res.render('index', { pageTitle: 'Trang chủ', data: siteData });
+  res.render('index', { pageTitle: 'Trang chủ', data: { ...siteData, lop6Chapters: lop6Data.chapters } });
 });
 
 router.get('/games/dien-bien-phu', (req, res) => {
