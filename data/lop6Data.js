@@ -3,7 +3,7 @@ module.exports = {
     grade: 6,
     title: 'Lịch sử 6',
     subtitle: 'Kết nối tri thức với cuộc sống',
-    totalLessons: 19,
+    totalLessons: 20,
     totalChapters: 5,
     color: '#ff7a1a'
   },
@@ -21,8 +21,6 @@ module.exports = {
           id: 'bai-1',
           number: 1,
           title: 'Lịch sử và cuộc sống',
-          pdf: '/pdfs/lop6/bai1.pdf',
-          infographic: '/images/lop6/bai1-infographic.png',
           mindmap: {
             center: 'Lịch sử và cuộc sống',
             branches: [
@@ -416,7 +414,7 @@ module.exports = {
       title: 'Việt Nam từ khoảng thế kỉ VII trước Công nguyên đến đầu thế kỉ X',
       icon: '🇻🇳',
       color: '#ff7a1a',
-      summary: 'Lịch sử Việt Nam thời kỳ dựng nước Văn Lang – Âu Lạc, thời kỳ Bắc thuộc và các cuộc đấu tranh giành độc lập.',
+      summary: 'Lịch sử Việt Nam thời kỳ dựng nước Văn Lang – Âu Lạc, thời kỳ Bắc thuộc, các cuộc đấu tranh giành độc lập, vương quốc Chăm-pa và Phù Nam.',
       lessons: [
         {
           id: 'bai-14',
@@ -589,6 +587,36 @@ module.exports = {
                 label: 'Di sản',
                 color: '#994000',
                 children: ['Thánh địa Mỹ Sơn (UNESCO)', 'Tháp Bà Ponagar – Nha Trang', 'Văn hóa phong phú']
+              }
+            ]
+          }
+        },
+        {
+          id: 'bai-20',
+          number: 20,
+          title: 'Vương quốc Phù Nam',
+          mindmap: {
+            center: 'Vương quốc Phù Nam',
+            branches: [
+              {
+                label: 'Hình thành',
+                color: '#ff7a1a',
+                children: ['TK I SCN – Nam Bộ Việt Nam', 'Vùng đồng bằng sông Cửu Long', 'Ảnh hưởng văn hóa Ấn Độ']
+              },
+              {
+                label: 'Kinh tế',
+                color: '#e96508',
+                children: ['Trung tâm thương mại hàng hải', 'Cảng Óc Eo sầm uất', 'Nông nghiệp & thủ công nghiệp']
+              },
+              {
+                label: 'Chính trị – Xã hội',
+                color: '#bf4f04',
+                children: ['Nhà nước quân chủ', 'Vua nắm quyền tối cao', 'Phân tầng xã hội rõ rệt']
+              },
+              {
+                label: 'Suy vong',
+                color: '#994000',
+                children: ['TK VI – VII suy yếu', 'Bị Chân Lạp thôn tính', 'Để lại di tích Óc Eo']
               }
             ]
           }
