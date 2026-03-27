@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap');
 :root {
   --orange-50: #fff5eb;
   --orange-100: #ffe7cc;
@@ -2037,6 +2038,7 @@ body {
   background: linear-gradient(180deg, #fffdf9 0%, #fff8f2 40%, #ffffff 100%);
   background-size: 100% 300%;
   animation: bgShift 12s ease-in-out infinite alternate;
+  font-family: 'Nunito', sans-serif;
 }
 @keyframes bgShift {
   0%   { background-position: 0% 0%; }
