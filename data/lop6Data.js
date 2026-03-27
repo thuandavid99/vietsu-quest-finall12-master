@@ -46,6 +46,8 @@ module.exports = {
           id: 'bai-2',
           number: 2,
           title: 'Dựa vào đâu để biết và phục dựng lại lịch sử?',
+          pdf: '/pdfs/lop6/bai2.pdf',
+          infographic: '/images/lop6/bai2-infographic.png',
           mindmap: {
             center: 'Tư liệu lịch sử',
             branches: [
@@ -76,6 +78,8 @@ module.exports = {
           id: 'bai-3',
           number: 3,
           title: 'Thời gian trong lịch sử',
+          pdf: '/pdfs/lop6/bai3.pdf',
+          infographic: '/images/lop6/bai3-infographic.png',
           mindmap: {
             center: 'Thời gian lịch sử',
             branches: [
@@ -112,6 +116,8 @@ module.exports = {
           id: 'bai-4',
           number: 4,
           title: 'Nguồn gốc loài người',
+          pdf: '/pdfs/lop6/bai4.pdf',
+          infographic: '/images/lop6/bai4-infographic.png',
           mindmap: {
             center: 'Nguồn gốc loài người',
             branches: [
@@ -142,6 +148,8 @@ module.exports = {
           id: 'bai-5',
           number: 5,
           title: 'Xã hội nguyên thuỷ',
+          pdf: '/pdfs/lop6/bai5.pdf',
+          infographic: '/images/lop6/bai5-infographic.png',
           mindmap: {
             center: 'Xã hội nguyên thuỷ',
             branches: [
@@ -172,6 +180,8 @@ module.exports = {
           id: 'bai-6',
           number: 6,
           title: 'Sự chuyển biến và phân hoá của xã hội nguyên thuỷ',
+          pdf: '/pdfs/lop6/bai6.pdf',
+          infographic: '/images/lop6/bai6-infographic.png',
           mindmap: {
             center: 'Chuyển biến xã hội',
             branches: [
@@ -208,6 +218,8 @@ module.exports = {
           id: 'bai-7',
           number: 7,
           title: 'Ai Cập và Lưỡng Hà cổ đại',
+          pdf: '/pdfs/lop6/bai7.pdf',
+          infographic: '/images/lop6/bai7-infographic.png',
           mindmap: {
             center: 'Văn minh cổ đại',
             branches: [
@@ -238,6 +250,8 @@ module.exports = {
           id: 'bai-8',
           number: 8,
           title: 'Ấn Độ cổ đại',
+          pdf: '/pdfs/lop6/bai8.pdf',
+          infographic: '/images/lop6/bai8-infographic.png',
           mindmap: {
             center: 'Ấn Độ cổ đại',
             branches: [
@@ -263,6 +277,8 @@ module.exports = {
           id: 'bai-9',
           number: 9,
           title: 'Trung Quốc từ thời cổ đại đến thế kỉ VII',
+          pdf: '/pdfs/lop6/bai9.pdf',
+          infographic: '/images/lop6/bai9-infographic.png',
           mindmap: {
             center: 'Trung Quốc cổ đại',
             branches: [
@@ -293,6 +309,8 @@ module.exports = {
           id: 'bai-10',
           number: 10,
           title: 'Hy Lạp và La Mã cổ đại',
+          pdf: '/pdfs/lop6/bai10.pdf',
+          infographic: '/images/lop6/bai10-infographic.png',
           mindmap: {
             center: 'Hy Lạp – La Mã',
             branches: [
@@ -334,6 +352,8 @@ module.exports = {
           id: 'bai-11',
           number: 11,
           title: 'Các quốc gia sơ kì ở Đông Nam Á',
+          pdf: '/pdfs/lop6/bai11.pdf',
+          infographic: '/images/lop6/bai11-infographic.png',
           mindmap: {
             center: 'Quốc gia sơ kỳ ĐNA',
             branches: [
@@ -359,6 +379,8 @@ module.exports = {
           id: 'bai-12',
           number: 12,
           title: 'Sự hình thành và phát triển của các vương quốc phong kiến ở Đông Nam Á',
+          pdf: '/pdfs/lop6/bai12.pdf',
+          infographic: '/images/lop6/bai12-infographic.png',
           mindmap: {
             center: 'Vương quốc phong kiến ĐNA',
             branches: [
@@ -384,6 +406,8 @@ module.exports = {
           id: 'bai-13',
           number: 13,
           title: 'Giao lưu văn hoá ở Đông Nam Á từ đầu Công nguyên đến thế kỉ X',
+          pdf: '/pdfs/lop6/bai13.pdf',
+          infographic: '/images/lop6/bai13-infographic.png',
           mindmap: {
             center: 'Giao lưu văn hóa ĐNA',
             branches: [
@@ -420,6 +444,8 @@ module.exports = {
           id: 'bai-14',
           number: 14,
           title: 'Nhà nước Văn Lang – Âu Lạc',
+          pdf: '/pdfs/lop6/bai14.pdf',
+          infographic: '/images/lop6/bai14-infographic.png',
           mindmap: {
             center: 'Văn Lang – Âu Lạc',
             branches: [
@@ -450,6 +476,8 @@ module.exports = {
           id: 'bai-15',
           number: 15,
           title: 'Chính sách cai trị của các triều đại phong kiến phương Bắc',
+          pdf: '/pdfs/lop6/bai15.pdf',
+          infographic: '/images/lop6/bai15-infographic.png',
           mindmap: {
             center: 'Bắc thuộc (179 TCN – 938)',
             branches: [
@@ -480,6 +508,8 @@ module.exports = {
           id: 'bai-16',
           number: 16,
           title: 'Các cuộc khởi nghĩa tiêu biểu giành độc lập trước thế kỉ X',
+          pdf: '/pdfs/lop6/bai16.pdf',
+          infographic: '/images/lop6/bai16-infographic.png',
           mindmap: {
             center: 'Các cuộc khởi nghĩa',
             branches: [
@@ -510,6 +540,8 @@ module.exports = {
           id: 'bai-17',
           number: 17,
           title: 'Cuộc đấu tranh bảo tồn và phát triển văn hoá dân tộc',
+          pdf: '/pdfs/lop6/bai17.pdf',
+          infographic: '/images/lop6/bai17-infographic.png',
           mindmap: {
             center: 'Bảo tồn văn hóa Việt',
             branches: [
@@ -535,6 +567,8 @@ module.exports = {
           id: 'bai-18',
           number: 18,
           title: 'Bước ngoặt lịch sử đầu thế kỉ X',
+          pdf: '/pdfs/lop6/bai18.pdf',
+          infographic: '/images/lop6/bai18-infographic.png',
           mindmap: {
             center: 'Độc lập TK X',
             branches: [
@@ -565,6 +599,8 @@ module.exports = {
           id: 'bai-19',
           number: 19,
           title: 'Vương quốc Chăm-pa từ thế kỉ II đến thế kỉ X',
+          pdf: '/pdfs/lop6/bai19.pdf',
+          infographic: '/images/lop6/bai19-infographic.png',
           mindmap: {
             center: 'Vương quốc Chăm-pa',
             branches: [
@@ -595,6 +631,8 @@ module.exports = {
           id: 'bai-20',
           number: 20,
           title: 'Vương quốc Phù Nam',
+          pdf: '/pdfs/lop6/bai20.pdf',
+          infographic: '/images/lop6/bai20-infographic.png',
           mindmap: {
             center: 'Vương quốc Phù Nam',
             branches: [
