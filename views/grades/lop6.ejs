@@ -169,18 +169,6 @@
             <div class="lesson-toggle">▾</div>
           </div>
           <div class="lesson-body">
-  <% if (lesson.infographic) { %>
-  <div class="mindmap-label">Infographic</div>
-  <img src="<%= lesson.infographic %>"
-       alt="Infographic <%= lesson.title %>"
-       style="width:100%; border-radius:10px; margin-bottom:1.25rem; border:1px solid #f0e8e0;">
-  <% } %>
-
-  <div class="mindmap-label">Sơ đồ tư duy</div>
-  <div class="mindmap-wrap">
-    <%- renderMindmap(lesson.mindmap, ch.color) %>
-  </div>
-
   <% if (lesson.pdf) { %>
   <div class="mindmap-label" style="margin-top:1.25rem;">Sách giáo khoa</div>
   <div style="border:1px solid #f0e8e0; border-radius:10px; overflow:hidden;">
@@ -193,6 +181,18 @@
      style="display:inline-block; margin-top:.75rem; color:#ff7a1a; font-size:.88rem; font-weight:600;">
     ↗ Mở PDF trong tab mới
   </a>
+  <% } %>
+
+  <div class="mindmap-label" style="margin-top:1.25rem;">Sơ đồ tư duy</div>
+  <div class="mindmap-wrap">
+    <%- renderMindmap(lesson.mindmap, ch.color) %>
+  </div>
+
+  <% if (lesson.infographic) { %>
+  <div class="mindmap-label" style="margin-top:1.25rem;">Infographic</div>
+  <img src="<%= lesson.infographic %>"
+       alt="Infographic <%= lesson.title %>"
+       style="width:100%; border-radius:10px; margin-bottom:1.25rem; border:1px solid #f0e8e0;">
   <% } %>
 
 </div>
