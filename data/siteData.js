@@ -1,5 +1,5 @@
 module.exports = {
-  brand: { name: 'Việt Sử Quest', tagline: 'Nền tảng học Lịch sử Việt Nam bằng trải nghiệm' },
+  brand: { name: 'Trạm Sử Meta', tagline: 'Nền tảng học Lịch sử Việt Nam bằng trải nghiệm' },
   hero: {
     title: 'Khám phá lịch sử Việt Nam theo cách sinh động hơn',
     subtitle: 'Học theo lớp 6-12, luyện quiz, chơi game lịch sử, khám phá bản đồ sự kiện và hỏi đáp cùng trợ lý AI trên một giao diện hiện đại.',

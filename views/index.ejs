@@ -70,49 +70,156 @@
           </div>
 
           <style>
-            .chapter-cards-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:1.25rem; margin-bottom:1.5rem; }
-            .chapter-card { background:#fff; border:2px solid #f0e8e0; border-radius:16px; padding:1.5rem 1.25rem; cursor:pointer; transition:all .2s; text-align:center; }
-            .chapter-card:hover { border-color:#ff7a1a; box-shadow:0 4px 20px #ff7a1a18; transform:translateY(-3px); }
-            .chapter-card.active { border-color:#ff7a1a; background:#fff8f3; }
-            .chapter-card .ch-icon { font-size:2.2rem; margin-bottom:.6rem; display:block; }
-            .chapter-card .ch-num { font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#ff7a1a; margin-bottom:.25rem; }
-            .chapter-card .ch-title { font-size:.85rem; font-weight:700; color:#1a1a1a; line-height:1.4; margin-bottom:.7rem; }
-            .chapter-card .ch-count { font-size:.78rem; color:#888; background:#f5f0eb; padding:.2rem .6rem; border-radius:99px; display:inline-block; }
-            .chapter-card.active .ch-count { background:#ff7a1a22; color:#ff7a1a; font-weight:700; }
+            .chapter-cards-grid {
+              display: grid;
+              grid-template-columns: repeat(5, 1fr);
+              gap: 1.25rem;
+              margin-bottom: 1.75rem;
+            }
+            @media (max-width: 900px) { .chapter-cards-grid { grid-template-columns: repeat(3, 1fr); } }
+            @media (max-width: 600px) { .chapter-cards-grid { grid-template-columns: repeat(2, 1fr); } }
 
+            .chapter-card {
+              position: relative;
+              border-radius: 20px;
+              overflow: hidden;
+              cursor: pointer;
+              transition: transform .22s, box-shadow .22s;
+              aspect-ratio: 3/4;
+              min-height: 220px;
+              box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+            }
+            .chapter-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.18); }
+            .chapter-card.active { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+
+            /* Màu nền mỗi chương */
+            .chapter-card:nth-child(1) { background: linear-gradient(145deg, #2d6a4f, #52b788); }
+            .chapter-card:nth-child(2) { background: linear-gradient(145deg, #1d3557, #457b9d); }
+            .chapter-card:nth-child(3) { background: linear-gradient(145deg, #7b2d00, #c1440e); }
+            .chapter-card:nth-child(4) { background: linear-gradient(145deg, #5c4a00, #c9a227); }
+            .chapter-card:nth-child(5) { background: linear-gradient(145deg, #6b0000, #c1121f); }
+
+            /* Ảnh minh họa góc phải dưới */
+            .chapter-card-img {
+              position: absolute;
+              bottom: 0; right: 0;
+              width: 100%;
+              height: 50%;
+              object-fit: cover;
+              object-position: center top;
+              opacity: .95;
+              border-radius: 0 0 20px 20px;
+              mask-image: linear-gradient(to bottom, transparent 0%, black 60%);
+              -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 60%);
+              transition: transform .3s;
+            }
+            .chapter-card:hover .chapter-card-img { transform: scale(1.05) translateY(-4px); }
+
+            /* Overlay gradient để chữ dễ đọc */
+            .chapter-card-overlay {
+              position: absolute; inset: 0;
+              background: linear-gradient(135deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+            }
+
+            /* Họa tiết nền */
+            .chapter-card::before {
+              content: '';
+              position: absolute; inset: 0;
+              background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+              background-size: 18px 18px;
+              pointer-events: none;
+            }
+
+            /* Active border glow */
+            .chapter-card.active::after {
+              content: '';
+              position: absolute; inset: 0;
+              border-radius: 20px;
+              border: 3px solid rgba(255,255,255,0.6);
+              pointer-events: none;
+            }
+
+            /* Nội dung text */
+            .chapter-card-content {
+              position: absolute;
+              top: 0; left: 0;
+              padding: 1.1rem 1rem;
+              z-index: 2;
+            }
+            .chapter-card-content .ch-num {
+              font-size: .65rem; font-weight: 800;
+              letter-spacing: .12em; text-transform: uppercase;
+              color: rgba(255,255,255,0.75);
+              margin-bottom: .3rem;
+              display: block;
+            }
+            .chapter-card-content .ch-title {
+              font-size: .88rem; font-weight: 800;
+              color: #fff; line-height: 1.35;
+              margin-bottom: .6rem;
+              text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+            }
+            .chapter-card-content .ch-count {
+              display: inline-block;
+              font-size: .72rem; font-weight: 700;
+              color: #fff;
+              background: rgba(255,255,255,0.2);
+              backdrop-filter: blur(4px);
+              padding: .2rem .6rem;
+              border-radius: 99px;
+              border: 1px solid rgba(255,255,255,0.3);
+            }
+
+            /* Panel bài học */
             .chapter-lessons-panel { display:none; background:#fff; border:2px solid #ff7a1a; border-radius:16px; padding:1.5rem; margin-bottom:1.5rem; animation:slideDown .22s ease; }
             .chapter-lessons-panel.active { display:block; }
-            @keyframes slideDown { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)} }
-            .panel-header { display:flex; align-items:center; gap:.85rem; margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid #f0e8e0; }
-            .panel-icon { font-size:1.6rem; }
-            .panel-title { font-size:1rem; font-weight:800; color:#1a1a1a; margin:0; }
-            .panel-sub { font-size:.8rem; color:#999; margin:.15rem 0 0; }
-            .lesson-list { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:.5rem; }
+            @keyframes slideDown { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
+            .panel-header { display:flex; align-items:center; gap:.85rem; margin-bottom:1rem; padding-bottom:1rem; border-bottom:1.5px solid #f0e8e0; }
+            .panel-header-img { width:48px; height:48px; object-fit:cover; border-radius:10px; }
+            .panel-title { font-size:1.05rem; font-weight:800; color:#1a1a1a; margin:0; }
+            .panel-sub { font-size:.8rem; color:#999; margin:.2rem 0 0; }
+            .lesson-list { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:.5rem; }
             .lesson-item { display:flex; align-items:center; gap:.75rem; padding:.65rem .9rem; border-radius:10px; border:1.5px solid #f0e8e0; background:#fafaf8; text-decoration:none; color:#1a1a1a; transition:all .15s; }
-            .lesson-item:hover { border-color:#ff7a1a; background:#fff8f3; }
+            .lesson-item:hover { border-color:#ff7a1a; background:#fff8f3; transform:translateX(3px); }
             .lesson-item-num { width:30px; height:30px; border-radius:8px; background:#fff4ec; color:#ff7a1a; font-weight:800; font-size:.8rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
             .lesson-item-title { flex:1; font-size:.88rem; font-weight:500; }
             .lesson-item:hover .lesson-item-title { color:#ff7a1a; }
           </style>
 
+          <%
+            const chapterImages = [
+              { src: '/images/chapters/chuong1.png' },
+              { src: '/images/chapters/chuong2.png' },
+              { src: '/images/chapters/chuong3.jpg' },
+              { src: '/images/chapters/chuong4.jpg' },
+              { src: '/images/chapters/chuong5.jpg' }
+            ];
+          %>
+
           <div class="chapter-cards-grid reveal">
-            <% data.lop6Chapters.forEach(function(ch) { %>
+            <% data.lop6Chapters.forEach(function(ch, i) { %>
             <div class="chapter-card" onclick="toggleChapter('<%= ch.id %>', this)">
-              <span class="ch-icon"><%= ch.icon %></span>
-              <div class="ch-num">Chương <%= ch.number %></div>
-              <div class="ch-title"><%= ch.title %></div>
-              <span class="ch-count"><%= ch.lessons.length %> bài học</span>
+              <div class="chapter-card-overlay"></div>
+              <img class="chapter-card-img"
+                   src="<%= chapterImages[i].src %>"
+                   alt="Chương <%= ch.number %>"
+                   onerror="this.style.display='none'">
+              <div class="chapter-card-content">
+                <span class="ch-num">Chương <%= ch.number %></span>
+                <div class="ch-title"><%= ch.title %></div>
+                <span class="ch-count"><%= ch.lessons.length %> bài học</span>
+              </div>
             </div>
             <% }) %>
           </div>
 
-          <% data.lop6Chapters.forEach(function(ch) { %>
+          <% data.lop6Chapters.forEach(function(ch, i) { %>
           <div class="chapter-lessons-panel" id="panel-<%= ch.id %>">
             <div class="panel-header">
-              <span class="panel-icon"><%= ch.icon %></span>
+              <img class="panel-header-img" src="<%= chapterImages[i].src %>" alt="" onerror="this.style.display='none'">
               <div>
                 <div class="panel-title"><%= ch.title %></div>
-                <div class="panel-sub"><%= ch.lessons.length %> bài học</div>
+                <div class="panel-sub">Chương <%= ch.number %> · <%= ch.lessons.length %> bài học</div>
               </div>
             </div>
             <div class="lesson-list">
@@ -127,7 +234,10 @@
           <% }) %>
 
         </div>
+          </div>
+        </div>
       </section>
+
 
 
       <section id="methods" class="section section-soft">
@@ -236,7 +346,9 @@
     </div>
   <% }) %>
 </div>
-             
+            </div>
+          </div>
+        </div>
       </section>
 
       <section id="resources" class="section section-soft">
